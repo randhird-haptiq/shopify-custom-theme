@@ -59,7 +59,7 @@
             "settings": {
               "link_name": "Bestsellers",
               "link_url": "shopify://collections/bestsellers",
-              "show_megamenu": false,
+              "show_megamenu": true,
               "mega_menu_1": "",
               "mega_menu_2": "",
               "mega_menu_3": "",
@@ -406,24 +406,24 @@
             "type": "menu_item",
             "settings": {
               "mega_menu": "gift-treats",
-              "block_background_color": "#FFFFFF",
-              "block_text_color": "#7B7973"
+              "block_background_color": "#ffffff",
+              "block_text_color": "#7b7973"
             }
           },
           "menu_item_Mdgpit": {
             "type": "menu_item",
             "settings": {
               "mega_menu": "gift-types",
-              "block_background_color": "#FFFFFF",
-              "block_text_color": "#7B7973"
+              "block_background_color": "#ffffff",
+              "block_text_color": "#7b7973"
             }
           },
           "menu_item_yyA8f8": {
             "type": "menu_item",
             "settings": {
               "mega_menu": "holiday-gifts",
-              "block_background_color": "#FFFFFF",
-              "block_text_color": "#7B7973"
+              "block_background_color": "#ffffff",
+              "block_text_color": "#7b7973"
             }
           },
           "media_icon_cd78Xe": {
