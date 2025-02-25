@@ -32,6 +32,17 @@
       },
       "header": {
         "type": "header",
+        "blocks": {
+          "logo_bMkNkj": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify://shop_images/Group_1000006266.png"
+            }
+          }
+        },
+        "block_order": [
+          "logo_bMkNkj"
+        ],
         "settings": {
           "header_background": "#ffffff",
           "customer_support": "Customer Support",
