@@ -439,6 +439,20 @@
               "media_icon_image": "shopify://shop_images/pinterest.png",
               "media_icon_url": "https://pinterest.com"
             }
+          },
+          "media_icon_9UHBBR": {
+            "type": "media_icon",
+            "settings": {
+              "media_icon_image": "shopify://shop_images/twitter.png",
+              "media_icon_url": "https://twitter.com"
+            }
+          },
+          "media_icon_JWz4Dm": {
+            "type": "media_icon",
+            "settings": {
+              "media_icon_image": "shopify://shop_images/facebook.png",
+              "media_icon_url": "https://facebook.com"
+            }
           }
         },
         "block_order": [
@@ -447,7 +461,9 @@
           "menu_item_Mdgpit",
           "menu_item_yyA8f8",
           "media_icon_cd78Xe",
-          "media_icon_Qxc68k"
+          "media_icon_Qxc68k",
+          "media_icon_9UHBBR",
+          "media_icon_JWz4Dm"
         ],
         "settings": {
           "background_color": "#ffffff",
