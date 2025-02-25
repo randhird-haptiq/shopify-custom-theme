@@ -328,7 +328,7 @@
         "settings": {
           "heading": "Cookies speak louder than words",
           "filter_text": "Choose Your Gift",
-          "collection": "",
+          "collection": "food",
           "show_treat_filter": true,
           "treat_tags": "Original Cookies,Brownie Bites,Nibblers",
           "show_occasion_filter": true,
