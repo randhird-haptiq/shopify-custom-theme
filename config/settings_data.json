@@ -53,6 +53,17 @@
       },
       "home-banner": {
         "type": "home-banner",
+        "blocks": {
+          "hero_heading_aGrqiR": {
+            "type": "hero_heading",
+            "settings": {
+              "heading_text": "Celebrate Fall With Delicious Savings"
+            }
+          }
+        },
+        "block_order": [
+          "hero_heading_aGrqiR"
+        ],
         "settings": {
           "text_wrap_alignment": "center",
           "text_alignment": "center",
