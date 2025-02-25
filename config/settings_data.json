@@ -132,6 +132,21 @@
               "suggestion2": "Cookie Cakes",
               "sugest_url2": ""
             }
+          },
+          "menu_item_6k6Pwb": {
+            "type": "menu_item",
+            "settings": {
+              "link_name": "Specials",
+              "link_url": "shopify://collections/get-well",
+              "show_megamenu": false,
+              "mega_menu_1": "",
+              "mega_menu_2": "",
+              "mega_menu_3": "",
+              "suggestion1": "",
+              "sugest_url1": "",
+              "suggestion2": "Cookie Cakes",
+              "sugest_url2": ""
+            }
           }
         },
         "block_order": [
@@ -141,7 +156,8 @@
           "menu_item_M8nmU6",
           "menu_item_hEk9Fa",
           "menu_item_wwWKTR",
-          "menu_item_MVNkab"
+          "menu_item_MVNkab",
+          "menu_item_6k6Pwb"
         ],
         "settings": {
           "header_background": "#ffffff",
