@@ -316,9 +316,11 @@
       "home-video-section": {
         "type": "home-video-section",
         "settings": {
-          "autoplay": false,
-          "loop": false,
-          "muted": false
+          "video": "shopify://files/videos/-a91c-4e95-9578-9d89fa875a91.mp4",
+          "video_mobile": "shopify://files/videos/cc02b3ecd1484e158c46fc3f14789dd2.SD-480p-1.5Mbps-38542270.mp4",
+          "autoplay": true,
+          "loop": true,
+          "muted": true
         }
       },
       "product-filter-section": {
