@@ -1,10 +1,245 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "currency_format": "${{amount}} USD",
     "money_format": "${{amount}}",
     "money_with_currency_format": "${{amount}} USD",
-    "enabled_currencies": ["USD"],
-    "default_currency": "USD"
+    "enabled_currencies": [
+      "USD"
+    ],
+    "default_currency": "USD",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "header_text": "Text for Announcement",
+          "span_text": "no code needed",
+          "button_text": "Shop Sale",
+          "button_link": "shopify://collections/all",
+          "background_color": "#C4122E",
+          "text_color": "#FFFFFF",
+          "button_background_color": "#fff9eb",
+          "button_text_color": "#0d0a02"
+        }
+      },
+      "header": {
+        "type": "header",
+        "blocks": {
+          "logo_bMkNkj": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify://shop_images/Group_1000006266.png"
+            }
+          }
+        },
+        "block_order": [
+          "logo_bMkNkj"
+        ],
+        "settings": {
+          "header_background": "#ffffff",
+          "customer_support": "Customer Support",
+          "customer_link": "",
+          "store_locator": "Store Locator",
+          "store_locator_link": ""
+        }
+      },
+      "home-banner": {
+        "type": "home-banner",
+        "blocks": {
+          "hero_heading_aGrqiR": {
+            "type": "hero_heading",
+            "settings": {
+              "heading_text": "Celebrate Fall With Delicious Savings"
+            }
+          }
+        },
+        "block_order": [
+          "hero_heading_aGrqiR"
+        ],
+        "settings": {
+          "image": "shopify://shop_images/Hero-1918x850-Fall_Cookies_Frame-219_1.png",
+          "mbl_image": "shopify://shop_images/Mobile_Hero-New-Fall-High_Res-18_1.png",
+          "text_wrap_alignment": "center",
+          "text_alignment": "center",
+          "tablet_text_alignment": "center",
+          "mobile_text_alignment": "left",
+          "hide_heading_tablet": false,
+          "hide_subheading_tablet": false,
+          "hide_text_tablet": false,
+          "hide_heading_mobile": true,
+          "hide_subheading_mobile": false,
+          "hide_text_mobile": true,
+          "padding_top": 0,
+          "padding_bottom": 0,
+          "mobile_padding_top": 0,
+          "mobile_padding_bottom": 0,
+          "text_color": "#232323",
+          "btn_background_color": "#c4122e",
+          "btn_text_color": "#FFF3DC"
+        }
+      },
+      "promotional-banner3": {
+        "type": "promotional-banner3",
+        "settings": {
+          "title": "Get Ready to Celebrate the Holiday Season",
+          "text": "<p>Spread joy with delightful holiday cookie gifts from Mrs. Fields. Surprise loved ones near or far with unique and beautifully curated gift sets.</p>",
+          "background_color": "#FFF3DC",
+          "text_color": "#333",
+          "reverse": false,
+          "button_background_color": "#FFF3DC",
+          "button_text_color": "#C4122E",
+          "text_alignment": "left",
+          "text_alignment_mobile": "left",
+          "hide_description_tablet": false,
+          "hide_description_mobile": false,
+          "button_text": "Shop Now",
+          "button_link": "shopify://collections/all",
+          "hover_background_color": "#C4122E",
+          "hover_text_color": "#FFF3DC",
+          "hover_button_text_color": "#000000",
+          "hover_button_background_color": "#FFF3DC"
+        }
+      },
+      "promotional-banner": {
+        "type": "promotional-banner",
+        "settings": {
+          "title": "Get Ready to Celebrate the Holiday Season",
+          "text": "<p>Spread joy with delightful holiday cookie gifts from Mrs. Fields. Surprise loved ones near or far with unique and beautifully curated gift sets.</p>",
+          "background_color": "#FFF3DC",
+          "text_color": "#333",
+          "button_background_color": "#FFF3DC",
+          "button_text_color": "#C4122E",
+          "text_alignment": "left",
+          "text_alignment_mobile": "left",
+          "hide_description_tablet": false,
+          "hide_description_mobile": false,
+          "button_text": "Shop Now",
+          "button_link": "shopify://collections/all",
+          "hover_background_color": "#C4122E",
+          "hover_text_color": "#FFF3DC",
+          "hover_button_text_color": "#000000",
+          "hover_button_background_color": "#FFF3DC"
+        }
+      },
+      "promotional-banner2": {
+        "type": "promotional-banner2",
+        "settings": {
+          "title": "Get Ready to Celebrate the Holiday Season",
+          "text": "<p>Spread joy with delightful holiday cookie gifts from Mrs. Fields. Surprise loved ones near or far with unique and beautifully curated gift sets.</p>",
+          "background_color": "#FFF3DC",
+          "text_color": "#333",
+          "reverse": false,
+          "button_background_color": "#FFF3DC",
+          "button_text_color": "#C4122E",
+          "text_alignment": "left",
+          "text_alignment_mobile": "left",
+          "hide_description_tablet": false,
+          "hide_description_mobile": false,
+          "button_text": "Shop Now",
+          "button_link": "shopify://collections/all",
+          "hover_background_color": "#C4122E",
+          "hover_text_color": "#FFF3DC",
+          "hover_button_text_color": "#000000",
+          "hover_button_background_color": "#FFF3DC"
+        }
+      },
+      "product-tabs-section": {
+        "type": "product-tabs-section",
+        "settings": {
+          "heading": "See our selections",
+          "collection_1": "",
+          "collection_2": "",
+          "collection_3": "",
+          "tabs_alignment": "left",
+          "background_color": "#FFF3DC",
+          "text_color": "#000000",
+          "card_background_color": "#FFFFFF",
+          "card_text_color": "#000000",
+          "sale_badge_background_color": "#F44336",
+          "sale_badge_text_color": "#FFFFFF",
+          "slider_button_background_color": "#DDB468",
+          "selector_background_color": "#D3D3D3",
+          "selector_text_color": "#000000",
+          "on_select_background_color": "#FFFFFF",
+          "on_select_text_color": "#DDB468"
+        }
+      },
+      "home-video-section": {
+        "type": "home-video-section",
+        "settings": {
+          "autoplay": false,
+          "loop": false,
+          "muted": false
+        }
+      },
+      "product-filter-section": {
+        "type": "product-filter-section",
+        "settings": {
+          "heading": "Cookies speak louder than words",
+          "filter_text": "Choose Your Gift",
+          "collection": "",
+          "show_treat_filter": true,
+          "treat_tags": "Original Cookies,Brownie Bites,Nibblers",
+          "show_occasion_filter": true,
+          "occasion_tags": "Birthday,Thank You,Signature,Get Well,Sympathy",
+          "show_budget_filter": true,
+          "budget_tags": "Under $30 to $50,$50 to $75,$75 to $100,Over $100",
+          "background_color": "#FFF3DC",
+          "text_color": "#232323",
+          "selector_background_color": "#FFFFFF",
+          "selector_text_color": "#232323",
+          "on_select_background_color": "#C4122E",
+          "on_select_text_color": "#FFFFFF",
+          "selector_text_alignment": "left",
+          "card_background_color": "#FFF3DC",
+          "card_text_color": "#232323",
+          "sale_badge_background_color": "#C4122E",
+          "sale_badge_text_color": "#FFF",
+          "slider_button_background_color": "#C4122E"
+        }
+      },
+      "pickup-promotional-banner": {
+        "type": "pickup-promotional-banner",
+        "settings": {
+          "text_alignment": "center",
+          "tablet_text_alignment": "center",
+          "mobile_text_alignment": "left",
+          "hide_heading_tablet": false,
+          "hide_subheading_tablet": false,
+          "hide_heading_mobile": false,
+          "hide_subheading_mobile": false,
+          "background_color": "#fff9eb",
+          "text_color": "#232323",
+          "btn_background_color": "#c4122e",
+          "btn_text_color": "#FFF3DC"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "background_color": "#FFFFFF",
+          "text_color": "#7B7973"
+        }
+      },
+      "post-footer": {
+        "type": "post-footer",
+        "settings": {
+          "footer_text": "© 2024, MRS.FIELDS GIFTING AND LICENSING, LLC | 1-800-COOKIES® | PRIVACY POLICY | TERMS",
+          "background_color": "#FFFFFF",
+          "text_color": "#7B7973",
+          "text_alignment": "center"
+        }
+      }
+    },
+    "content_for_index": []
   },
   "presets": {
     "Default": {}
