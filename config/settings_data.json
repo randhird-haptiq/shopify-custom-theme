@@ -229,9 +229,10 @@
         "settings": {
           "title": "Get Ready to Celebrate the Holiday Season",
           "text": "<p>Spread joy with delightful holiday cookie gifts from Mrs. Fields. Surprise loved ones near or far with unique and beautifully curated gift sets.</p>",
+          "image": "shopify://shop_images/Promo_Banner-Ooey_Gooey_Chocolate_Chip_Cookie-High_Res-51_1_1_423511b7-66d2-4bc5-9133-585eb4b3472e.png",
           "background_color": "#fff3dc",
           "text_color": "#333333",
-          "reverse": false,
+          "reverse": true,
           "button_background_color": "#fff3dc",
           "button_text_color": "#c4122e",
           "text_alignment": "left",
