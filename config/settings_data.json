@@ -453,6 +453,13 @@
               "media_icon_image": "shopify://shop_images/facebook.png",
               "media_icon_url": "https://facebook.com"
             }
+          },
+          "media_icon_g3jm36": {
+            "type": "media_icon",
+            "settings": {
+              "media_icon_image": "shopify://shop_images/tiktok.png",
+              "media_icon_url": "https://tiktok.com"
+            }
           }
         },
         "block_order": [
@@ -463,7 +470,8 @@
           "media_icon_cd78Xe",
           "media_icon_Qxc68k",
           "media_icon_9UHBBR",
-          "media_icon_JWz4Dm"
+          "media_icon_JWz4Dm",
+          "media_icon_g3jm36"
         ],
         "settings": {
           "background_color": "#ffffff",
