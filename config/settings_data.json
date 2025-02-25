@@ -252,6 +252,7 @@
         "settings": {
           "title": "Get Ready to Celebrate the Holiday Season",
           "text": "<p>Spread joy with delightful holiday cookie gifts from Mrs. Fields. Surprise loved ones near or far with unique and beautifully curated gift sets.</p>",
+          "image": "shopify://shop_images/Promo_Banner-24WTOWR011-Traditional_Snowman_Tower-High_Res-66071_1.png",
           "background_color": "#fff3dc",
           "text_color": "#333333",
           "button_background_color": "#fff3dc",
@@ -273,9 +274,10 @@
         "settings": {
           "title": "Get Ready to Celebrate the Holiday Season",
           "text": "<p>Spread joy with delightful holiday cookie gifts from Mrs. Fields. Surprise loved ones near or far with unique and beautifully curated gift sets.</p>",
+          "image": "shopify://shop_images/Featur_Banner-Corporate-Signature_tin_and_Logo_Cookies-V2-High_Res-218_1.png",
           "background_color": "#fff3dc",
           "text_color": "#333333",
-          "reverse": false,
+          "reverse": true,
           "button_background_color": "#fff3dc",
           "button_text_color": "#c4122e",
           "text_alignment": "left",
@@ -294,9 +296,9 @@
         "type": "product-tabs-section",
         "settings": {
           "heading": "See our selections",
-          "collection_1": "",
-          "collection_2": "",
-          "collection_3": "",
+          "collection_1": "trending",
+          "collection_2": "bestsellers",
+          "collection_3": "new-items",
           "tabs_alignment": "left",
           "background_color": "#fff3dc",
           "text_color": "#000000",
