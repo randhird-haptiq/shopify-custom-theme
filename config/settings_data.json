@@ -102,6 +102,21 @@
               "sugest_url2": "shopify://collections/birthday",
               "image2": "shopify://shop_images/Web-23HCRAT011-Moonlight_Manor_Crate-255_1.png"
             }
+          },
+          "menu_item_wwWKTR": {
+            "type": "menu_item",
+            "settings": {
+              "link_name": "Custom gifts",
+              "link_url": "shopify://collections",
+              "show_megamenu": false,
+              "mega_menu_1": "",
+              "mega_menu_2": "",
+              "mega_menu_3": "",
+              "suggestion1": "",
+              "sugest_url1": "",
+              "suggestion2": "Cookie Cakes",
+              "sugest_url2": ""
+            }
           }
         },
         "block_order": [
@@ -109,7 +124,8 @@
           "menu_item_jgEHCV",
           "menu_item_gwDDBp",
           "menu_item_M8nmU6",
-          "menu_item_hEk9Fa"
+          "menu_item_hEk9Fa",
+          "menu_item_wwWKTR"
         ],
         "settings": {
           "header_background": "#ffffff",
