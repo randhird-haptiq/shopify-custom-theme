@@ -351,7 +351,35 @@
       },
       "pickup-promotional-banner": {
         "type": "pickup-promotional-banner",
+        "blocks": {
+          "pickup_heading_nFw4FR": {
+            "type": "pickup_heading",
+            "settings": {
+              "heading_text": "Buy Online. Pick Up In Store"
+            }
+          },
+          "pickup_subheading_8y9PrP": {
+            "type": "pickup_subheading",
+            "settings": {
+              "subheading_text": "Mrs. Fields cookies can also be purchased online and picked up in a store near you."
+            }
+          },
+          "pickup_button_eKnWF6": {
+            "type": "pickup_button",
+            "settings": {
+              "button_text": "Find A Store",
+              "button_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "pickup_heading_nFw4FR",
+          "pickup_subheading_8y9PrP",
+          "pickup_button_eKnWF6"
+        ],
         "settings": {
+          "image": "shopify://shop_images/Mask_group.png",
+          "mbl_image": "shopify://shop_images/Buy_online_1.png",
           "text_alignment": "center",
           "tablet_text_alignment": "center",
           "mobile_text_alignment": "left",
