@@ -170,15 +170,37 @@
       "home-banner": {
         "type": "home-banner",
         "blocks": {
+          "hero_subheading_qr8WWC": {
+            "type": "hero_subheading",
+            "settings": {
+              "subheading_text": "Up to 30% Off Fall Cookie Gifts!"
+            }
+          },
           "hero_heading_aGrqiR": {
             "type": "hero_heading",
             "settings": {
               "heading_text": "Celebrate Fall With Delicious Savings"
             }
+          },
+          "hero_small_text_ydiDaX": {
+            "type": "hero_small_text",
+            "settings": {
+              "small_text": "No code needed"
+            }
+          },
+          "hero_button_7gNcFn": {
+            "type": "hero_button",
+            "settings": {
+              "button_text": "Shop Now",
+              "button_link": "shopify://collections"
+            }
           }
         },
         "block_order": [
-          "hero_heading_aGrqiR"
+          "hero_subheading_qr8WWC",
+          "hero_heading_aGrqiR",
+          "hero_small_text_ydiDaX",
+          "hero_button_7gNcFn"
         ],
         "settings": {
           "image": "shopify://shop_images/Hero-1918x850-Fall_Cookies_Frame-219_1.png",
