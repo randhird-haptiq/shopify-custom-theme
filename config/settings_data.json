@@ -395,6 +395,44 @@
       },
       "footer": {
         "type": "footer",
+        "blocks": {
+          "logo_PVWEMd": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify://shop_images/Group_1000006266.png"
+            }
+          },
+          "menu_item_3HDErF": {
+            "type": "menu_item",
+            "settings": {
+              "mega_menu": "gift-treats",
+              "block_background_color": "#FFFFFF",
+              "block_text_color": "#7B7973"
+            }
+          },
+          "menu_item_Mdgpit": {
+            "type": "menu_item",
+            "settings": {
+              "mega_menu": "gift-types",
+              "block_background_color": "#FFFFFF",
+              "block_text_color": "#7B7973"
+            }
+          },
+          "menu_item_yyA8f8": {
+            "type": "menu_item",
+            "settings": {
+              "mega_menu": "holiday-gifts",
+              "block_background_color": "#FFFFFF",
+              "block_text_color": "#7B7973"
+            }
+          }
+        },
+        "block_order": [
+          "logo_PVWEMd",
+          "menu_item_3HDErF",
+          "menu_item_Mdgpit",
+          "menu_item_yyA8f8"
+        ],
         "settings": {
           "background_color": "#ffffff",
           "text_color": "#7b7973"
