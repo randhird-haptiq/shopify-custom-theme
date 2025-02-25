@@ -38,10 +38,60 @@
             "settings": {
               "logo": "shopify://shop_images/Group_1000006266.png"
             }
+          },
+          "menu_item_jgEHCV": {
+            "type": "menu_item",
+            "settings": {
+              "link_name": "Fall Treats",
+              "link_url": "shopify://collections",
+              "show_megamenu": false,
+              "mega_menu_1": "",
+              "mega_menu_2": "",
+              "mega_menu_3": "",
+              "suggestion1": "",
+              "sugest_url1": "",
+              "suggestion2": "Cookie Cakes",
+              "sugest_url2": ""
+            }
+          },
+          "menu_item_gwDDBp": {
+            "type": "menu_item",
+            "settings": {
+              "link_name": "Bestsellers",
+              "link_url": "shopify://collections/bestsellers",
+              "show_megamenu": false,
+              "mega_menu_1": "",
+              "mega_menu_2": "",
+              "mega_menu_3": "",
+              "suggestion1": "",
+              "sugest_url1": "",
+              "suggestion2": "Cookie Cakes",
+              "sugest_url2": ""
+            }
+          },
+          "menu_item_M8nmU6": {
+            "type": "menu_item",
+            "settings": {
+              "link_name": "Shop by Treats",
+              "link_url": "shopify://collections/food",
+              "show_megamenu": true,
+              "mega_menu_1": "gift-treats",
+              "mega_menu_2": "gift-types",
+              "mega_menu_3": "gifts-by-price",
+              "suggestion1": "Best Sellers",
+              "sugest_url1": "shopify://collections/bestsellers",
+              "image1": "shopify://shop_images/Featur_Banner-Corporate-Signature_tin_and_Logo_Cookies-V2-High_Res-218_1.png",
+              "suggestion2": "Cookie Cakes",
+              "sugest_url2": "shopify://collections/cookies",
+              "image2": "shopify://shop_images/Promo_Banner-Ooey_Gooey_Chocolate_Chip_Cookie-High_Res-51_1_1_423511b7-66d2-4bc5-9133-585eb4b3472e.png"
+            }
           }
         },
         "block_order": [
-          "logo_bMkNkj"
+          "logo_bMkNkj",
+          "menu_item_jgEHCV",
+          "menu_item_gwDDBp",
+          "menu_item_M8nmU6"
         ],
         "settings": {
           "header_background": "#ffffff",
