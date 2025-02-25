@@ -302,7 +302,7 @@
           "tabs_alignment": "left",
           "background_color": "#fff3dc",
           "text_color": "#000000",
-          "card_background_color": "#ffffff",
+          "card_background_color": "#fff3dc",
           "card_text_color": "#000000",
           "sale_badge_background_color": "#f44336",
           "sale_badge_text_color": "#ffffff",
