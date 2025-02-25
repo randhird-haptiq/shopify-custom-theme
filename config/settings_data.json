@@ -85,13 +85,31 @@
               "sugest_url2": "shopify://collections/cookies",
               "image2": "shopify://shop_images/Promo_Banner-Ooey_Gooey_Chocolate_Chip_Cookie-High_Res-51_1_1_423511b7-66d2-4bc5-9133-585eb4b3472e.png"
             }
+          },
+          "menu_item_hEk9Fa": {
+            "type": "menu_item",
+            "settings": {
+              "link_name": "Shop by Occasion",
+              "link_url": "shopify://collections/trending",
+              "show_megamenu": true,
+              "mega_menu_1": "holiday-gifts",
+              "mega_menu_2": "occasion-and-sentiments",
+              "mega_menu_3": "",
+              "suggestion1": "Valentine's day gift",
+              "sugest_url1": "shopify://collections/thank-you",
+              "image1": "shopify://shop_images/image_458bfb19-afe3-45ac-82f5-a89e3dd46360.png",
+              "suggestion2": "Birthday Gift",
+              "sugest_url2": "shopify://collections/birthday",
+              "image2": "shopify://shop_images/Web-23HCRAT011-Moonlight_Manor_Crate-255_1.png"
+            }
           }
         },
         "block_order": [
           "logo_bMkNkj",
           "menu_item_jgEHCV",
           "menu_item_gwDDBp",
-          "menu_item_M8nmU6"
+          "menu_item_M8nmU6",
+          "menu_item_hEk9Fa"
         ],
         "settings": {
           "header_background": "#ffffff",
