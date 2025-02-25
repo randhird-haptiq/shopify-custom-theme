@@ -20,14 +20,14 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
-          "header_text": "Text for Announcement",
+          "header_text": "Fall Into Something Delicious: Up To 30% Off Selected Gifts!",
           "span_text": "no code needed",
           "button_text": "Shop Sale",
           "button_link": "shopify://collections/all",
-          "background_color": "#C4122E",
-          "text_color": "#FFFFFF",
+          "background_color": "#c4122e",
+          "text_color": "#ffffff",
           "button_background_color": "#fff9eb",
-          "button_text_color": "#0d0a02"
+          "button_text_color": "#c4122e"
         }
       },
       "header": {
@@ -83,7 +83,7 @@
           "mobile_padding_bottom": 0,
           "text_color": "#232323",
           "btn_background_color": "#c4122e",
-          "btn_text_color": "#FFF3DC"
+          "btn_text_color": "#fff3dc"
         }
       },
       "promotional-banner3": {
@@ -91,21 +91,21 @@
         "settings": {
           "title": "Get Ready to Celebrate the Holiday Season",
           "text": "<p>Spread joy with delightful holiday cookie gifts from Mrs. Fields. Surprise loved ones near or far with unique and beautifully curated gift sets.</p>",
-          "background_color": "#FFF3DC",
-          "text_color": "#333",
+          "background_color": "#fff3dc",
+          "text_color": "#333333",
           "reverse": false,
-          "button_background_color": "#FFF3DC",
-          "button_text_color": "#C4122E",
+          "button_background_color": "#fff3dc",
+          "button_text_color": "#c4122e",
           "text_alignment": "left",
           "text_alignment_mobile": "left",
           "hide_description_tablet": false,
           "hide_description_mobile": false,
           "button_text": "Shop Now",
           "button_link": "shopify://collections/all",
-          "hover_background_color": "#C4122E",
-          "hover_text_color": "#FFF3DC",
+          "hover_background_color": "#c4122e",
+          "hover_text_color": "#fff3dc",
           "hover_button_text_color": "#000000",
-          "hover_button_background_color": "#FFF3DC"
+          "hover_button_background_color": "#fff3dc"
         }
       },
       "promotional-banner": {
@@ -113,20 +113,20 @@
         "settings": {
           "title": "Get Ready to Celebrate the Holiday Season",
           "text": "<p>Spread joy with delightful holiday cookie gifts from Mrs. Fields. Surprise loved ones near or far with unique and beautifully curated gift sets.</p>",
-          "background_color": "#FFF3DC",
-          "text_color": "#333",
-          "button_background_color": "#FFF3DC",
-          "button_text_color": "#C4122E",
+          "background_color": "#fff3dc",
+          "text_color": "#333333",
+          "button_background_color": "#fff3dc",
+          "button_text_color": "#c4122e",
           "text_alignment": "left",
           "text_alignment_mobile": "left",
           "hide_description_tablet": false,
           "hide_description_mobile": false,
           "button_text": "Shop Now",
           "button_link": "shopify://collections/all",
-          "hover_background_color": "#C4122E",
-          "hover_text_color": "#FFF3DC",
+          "hover_background_color": "#c4122e",
+          "hover_text_color": "#fff3dc",
           "hover_button_text_color": "#000000",
-          "hover_button_background_color": "#FFF3DC"
+          "hover_button_background_color": "#fff3dc"
         }
       },
       "promotional-banner2": {
@@ -134,21 +134,21 @@
         "settings": {
           "title": "Get Ready to Celebrate the Holiday Season",
           "text": "<p>Spread joy with delightful holiday cookie gifts from Mrs. Fields. Surprise loved ones near or far with unique and beautifully curated gift sets.</p>",
-          "background_color": "#FFF3DC",
-          "text_color": "#333",
+          "background_color": "#fff3dc",
+          "text_color": "#333333",
           "reverse": false,
-          "button_background_color": "#FFF3DC",
-          "button_text_color": "#C4122E",
+          "button_background_color": "#fff3dc",
+          "button_text_color": "#c4122e",
           "text_alignment": "left",
           "text_alignment_mobile": "left",
           "hide_description_tablet": false,
           "hide_description_mobile": false,
           "button_text": "Shop Now",
           "button_link": "shopify://collections/all",
-          "hover_background_color": "#C4122E",
-          "hover_text_color": "#FFF3DC",
+          "hover_background_color": "#c4122e",
+          "hover_text_color": "#fff3dc",
           "hover_button_text_color": "#000000",
-          "hover_button_background_color": "#FFF3DC"
+          "hover_button_background_color": "#fff3dc"
         }
       },
       "product-tabs-section": {
@@ -159,17 +159,17 @@
           "collection_2": "",
           "collection_3": "",
           "tabs_alignment": "left",
-          "background_color": "#FFF3DC",
+          "background_color": "#fff3dc",
           "text_color": "#000000",
-          "card_background_color": "#FFFFFF",
+          "card_background_color": "#ffffff",
           "card_text_color": "#000000",
-          "sale_badge_background_color": "#F44336",
-          "sale_badge_text_color": "#FFFFFF",
-          "slider_button_background_color": "#DDB468",
-          "selector_background_color": "#D3D3D3",
+          "sale_badge_background_color": "#f44336",
+          "sale_badge_text_color": "#ffffff",
+          "slider_button_background_color": "#ddb468",
+          "selector_background_color": "#d3d3d3",
           "selector_text_color": "#000000",
-          "on_select_background_color": "#FFFFFF",
-          "on_select_text_color": "#DDB468"
+          "on_select_background_color": "#ffffff",
+          "on_select_text_color": "#ddb468"
         }
       },
       "home-video-section": {
@@ -192,18 +192,18 @@
           "occasion_tags": "Birthday,Thank You,Signature,Get Well,Sympathy",
           "show_budget_filter": true,
           "budget_tags": "Under $30 to $50,$50 to $75,$75 to $100,Over $100",
-          "background_color": "#FFF3DC",
+          "background_color": "#fff3dc",
           "text_color": "#232323",
-          "selector_background_color": "#FFFFFF",
+          "selector_background_color": "#ffffff",
           "selector_text_color": "#232323",
-          "on_select_background_color": "#C4122E",
-          "on_select_text_color": "#FFFFFF",
+          "on_select_background_color": "#c4122e",
+          "on_select_text_color": "#ffffff",
           "selector_text_alignment": "left",
-          "card_background_color": "#FFF3DC",
+          "card_background_color": "#fff3dc",
           "card_text_color": "#232323",
-          "sale_badge_background_color": "#C4122E",
-          "sale_badge_text_color": "#FFF",
-          "slider_button_background_color": "#C4122E"
+          "sale_badge_background_color": "#c4122e",
+          "sale_badge_text_color": "#ffffff",
+          "slider_button_background_color": "#c4122e"
         }
       },
       "pickup-promotional-banner": {
@@ -219,22 +219,22 @@
           "background_color": "#fff9eb",
           "text_color": "#232323",
           "btn_background_color": "#c4122e",
-          "btn_text_color": "#FFF3DC"
+          "btn_text_color": "#fff3dc"
         }
       },
       "footer": {
         "type": "footer",
         "settings": {
-          "background_color": "#FFFFFF",
-          "text_color": "#7B7973"
+          "background_color": "#ffffff",
+          "text_color": "#7b7973"
         }
       },
       "post-footer": {
         "type": "post-footer",
         "settings": {
           "footer_text": "© 2024, MRS.FIELDS GIFTING AND LICENSING, LLC | 1-800-COOKIES® | PRIVACY POLICY | TERMS",
-          "background_color": "#FFFFFF",
-          "text_color": "#7B7973",
+          "background_color": "#ffffff",
+          "text_color": "#7b7973",
           "text_alignment": "center"
         }
       }
