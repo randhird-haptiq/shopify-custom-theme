@@ -65,6 +65,8 @@
           "hero_heading_aGrqiR"
         ],
         "settings": {
+          "image": "shopify://shop_images/Hero-1918x850-Fall_Cookies_Frame-219_1.png",
+          "mbl_image": "shopify://shop_images/Mobile_Hero-New-Fall-High_Res-18_1.png",
           "text_wrap_alignment": "center",
           "text_alignment": "center",
           "tablet_text_alignment": "center",
