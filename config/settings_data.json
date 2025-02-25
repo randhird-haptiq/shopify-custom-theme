@@ -59,7 +59,7 @@
             "settings": {
               "link_name": "Bestsellers",
               "link_url": "shopify://collections/bestsellers",
-              "show_megamenu": true,
+              "show_megamenu": false,
               "mega_menu_1": "",
               "mega_menu_2": "",
               "mega_menu_3": "",
