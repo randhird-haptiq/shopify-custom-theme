@@ -425,13 +425,29 @@
               "block_background_color": "#FFFFFF",
               "block_text_color": "#7B7973"
             }
+          },
+          "media_icon_cd78Xe": {
+            "type": "media_icon",
+            "settings": {
+              "media_icon_image": "shopify://shop_images/instagram.png",
+              "media_icon_url": "https://instagram.com"
+            }
+          },
+          "media_icon_Qxc68k": {
+            "type": "media_icon",
+            "settings": {
+              "media_icon_image": "shopify://shop_images/pinterest.png",
+              "media_icon_url": "https://pinterest.com"
+            }
           }
         },
         "block_order": [
           "logo_PVWEMd",
           "menu_item_3HDErF",
           "menu_item_Mdgpit",
-          "menu_item_yyA8f8"
+          "menu_item_yyA8f8",
+          "media_icon_cd78Xe",
+          "media_icon_Qxc68k"
         ],
         "settings": {
           "background_color": "#ffffff",
