@@ -1,0 +1,76 @@
+<header class="header" id="header">
+  <div class="header-inner flex space-between">
+
+    {% unless template=="product" %}
+      
+      <button class="menu-button" @click="toggleMenu">
+        <span>Menu</span>
+      </button>
+    {% else %}
+      <a href="javascript:history.back()" class="menu-button">
+        <span>Back</span>
+      </a>
+    {% endunless %}
+
+    <a href="/" class="header-title">{{ shop.name }}</a>
+    <div class="cart-button-container" @click="toggleMiniCart">
+      <button class="cart-button">
+        <span>
+          <template v-if="cart">Cart (${cart.item_count})</template>
+          <template v-else>Cart (0)</template>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div class="menu-drawer" :class="{hidden: menuDrawer}">
+    {% comment %} {% render 'menu-drawer' %} {% endcomment %}
+  </div>
+  <div class="mini-cart" :class="{ hidden: miniCartHidden }">
+    {% render 'mini-cart' %}
+  </div>
+</header>
+
+<script>
+  if (document.querySelector('#header')) {
+    console.log('Initializing Vue app...');
+
+    // Define the Vue app
+    const headerCart = Vue.createApp({
+      delimiters: ['${', '}'],
+      data() {
+        return {
+          cartData: [], // Initialize cartData as an empty array
+          miniCartHidden: true, // Initialize mini-cart as hidden
+        };
+      },
+      methods: {
+        toggleMiniCart() {
+          console.log('Toggling mini-cart visibility'); // Debugging
+          this.miniCartHidden = !this.miniCartHidden; // Toggle mini-cart visibility
+        },
+        toggleMenu(){
+          toggleMenu.openMenu()
+        },
+        async getCart() {
+          try {
+            const response = await axios.get('/cart.js');
+            this.cartData = [response.data]; // Update cartData with the response
+          } catch (error) {
+            console.error('Error fetching cart:', error);
+          }
+        },
+      },
+      computed: {
+        {% comment %} menuDrawer(){
+          return menuState.hidden
+        }, {% endcomment %}
+        cart() {
+          return this.cartData && this.cartData.length > 0 ? this.cartData[0] : null;
+        },
+      },
+      created() {
+        this.getCart(); // Fetch cart data when the app is created
+      },
+    }).mount('#header');
+  }
+</script>

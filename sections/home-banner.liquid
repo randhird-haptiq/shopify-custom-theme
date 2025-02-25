@@ -1,0 +1,279 @@
+{% if section.settings.image %}
+  <style>
+    #section-{{ section.id }} {
+      --bg-image: url('{{ section.settings.image | image_url }}');
+      {% if section.settings.mbl_image %}
+        --bg-mobile-image: url('{{ section.settings.mbl_image | image_url }}');
+      {% else %}
+        --bg-mobile-image: var(--bg-image);
+      {% endif %}
+      --text-wrap-alignment: {{ section.settings.text_wrap_alignment }};
+      --text-alignment:{{section.settings.text_alignment }};
+      --btn-bg-color: {{ section.settings.btn_background_color }};
+      --btn-text-color: {{ section.settings.btn_text_color }};
+      --text-color:{{section.settings.text_color }};
+      --tablet-text-alignment:{{ section.settings.tablet_text_alignment }};
+      --mobile-text-alignment:{{section.settings.mobile_text_alignment }};
+      --padding-top:{{ section.settings.padding_top }}px;
+      --padding-bottom:{{ section.settings.padding_bottom }}px;
+      --mobile-padding-top:{{ section.settings.mobile_padding_top }}px;
+      --mobile-padding-bottom:{{ section.settings.mobile_padding_bottom }}px;
+    }
+  </style>
+{% endif %}
+
+<section
+  id="section-{{ section.id }}"
+  class="banner"
+>
+  <div class="container">
+    <div class="banner-content">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'hero_heading' %}
+            <h3 class="hero-heading {% if section.settings.hide_heading_tablet %}hide-tablet{% endif %} {% if section.settings.hide_heading_mobile %}hide-mobile{% endif %}">
+              {{ block.settings.heading_text }}
+            </h3>
+          {% when 'hero_subheading' %}
+            <h2 class="hero-subheading {% if section.settings.hide_subheading_tablet %}hide-tablet{% endif %} {% if section.settings.hide_subheading_mobile %}hide-mobile{% endif %}">
+              {{ block.settings.subheading_text }}
+            </h2>
+          {% when 'hero_small_text' %}
+            <p class="hero-small-text {% if section.settings.hide_text_tablet %}hide-tablet{% endif %} {% if section.settings.hide_text_mobile %}hide-mobile{% endif %}">
+              {{ block.settings.small_text }}
+            </p>
+          {% when 'hero_button' %}
+            <a
+              href="{{ block.settings.button_link }}"
+              class="hero-button"
+              style="background-color: var(--btn-bg-color); color: var(--btn-text-color);"
+            >
+              {{ block.settings.button_text }}
+            </a>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Banner Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Select Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mbl_image",
+      "label": "Select Background Image for Mobile (Optional)"
+    },
+    {
+      "type": "select",
+      "id": "text_wrap_alignment",
+      "label": "Text Container Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "tablet_text_alignment",
+      "label": "Text Alignment For Tablet",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_alignment",
+      "label": "Text Alignment for Mobile ",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_heading_tablet",
+      "label": "Hide Heading on tablet",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_subheading_tablet",
+      "label": "Hide Sub-Heading on tablet",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_text_tablet",
+      "label": "Hide small-text on tablet",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_heading_mobile",
+      "label": "Hide heading on mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_subheading_mobile",
+      "label": "Hide subheading on mobile",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_text_mobile",
+      "label": "Hide small-text on mobile",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 400,
+      "step": 10,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 400,
+      "step": 10,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Padding top for mobile",
+      "min": 0,
+      "max": 400,
+      "step": 10,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Padding bottom for mobile",
+      "min": 0,
+      "max": 400,
+      "step": 10,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#232323"
+    },
+    {
+      "type": "color",
+      "id": "btn_background_color",
+      "label": "Button Background Color",
+      "default": "#c4122e"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text Color",
+      "default": "#FFF3DC"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hero_heading",
+      "name": "Hero Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading_text",
+          "label": "Heading Text",
+          "default": "Celebrate Fall With Delicious Savings"
+        }
+      ]
+    },
+    {
+      "type": "hero_subheading",
+      "name": "Hero Subheading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "subheading_text",
+          "label": "Subheading Text",
+          "default": "Up to 30% Off Fall Cookie Gifts!"
+        }
+      ]
+    },
+    {
+      "type": "hero_small_text",
+      "name": "Hero Small Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "small_text",
+          "label": "Small Text",
+          "default": "No code needed"
+        }
+      ]
+    },
+    {
+      "type": "hero_button",
+      "name": "Hero Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Image",
+      "blocks": [
+        { "type": "hero_heading" },
+        { "type": "hero_subheading" },
+        { "type": "hero_small_text" },
+        { "type": "hero_button" }
+      ]
+    }
+  ]
+}
+{% endschema %}

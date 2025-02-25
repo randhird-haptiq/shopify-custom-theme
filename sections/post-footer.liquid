@@ -1,0 +1,59 @@
+<style>
+  #section-{{ section.id }} {
+    --background-color:{{ section.settings.background_color }};
+    --text-color:{{ section.settings.text_color }};
+    --text-alignment:{{ section.settings.text_alignment }}
+  }
+</style>
+<section id="section-{{ section.id }}" class="post-footer">
+  <div class="footer-content-wrapper">
+    {% if section.settings.footer_text != blank %}
+      <p>
+        {{ section.settings.footer_text }}
+      </p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Post Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Text for Footer",
+      "info": "Add text for Footer here",
+      "default": "© 2024, MRS.FIELDS GIFTING AND LICENSING, LLC | 1-800-COOKIES® | PRIVACY POLICY | TERMS"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#7B7973"
+    },
+    {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Text Alignment",
+        "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" }
+        ],
+        "default": "center"
+      },
+  ],
+  "presets": [
+    {
+      "name": "Post Footer"
+    }
+  ]
+}
+{% endschema %}

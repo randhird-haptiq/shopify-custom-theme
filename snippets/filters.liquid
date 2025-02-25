@@ -1,0 +1,270 @@
+<div class="product-filters">
+  {% assign all_tags = '' %}
+  {% for product in collections[section.settings.collection].products %}
+    {% for tag in product.tags %}
+      {% assign all_tags = all_tags | append: tag | append: ',' %}
+    {% endfor %}
+  {% endfor %}
+  {% assign available_tags = all_tags | split: ',' | uniq %}
+
+  {%- if show_treat_filter -%}
+    <div class="selector box1">
+      <select id="filter-treat">
+        <option value="" selected>Select Treat</option>
+        {% assign treat_tags = section.settings.treat_tags | split: ',' %}
+        {% for tag in treat_tags %}
+          {% assign trimmed_tag = tag | strip %}
+          {% if trimmed_tag != '' and available_tags contains trimmed_tag %}
+            <option value="{{ trimmed_tag | downcase }}">{{ trimmed_tag }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+      <div class="arrow-wrapper">
+        <img src="{{ 'Vector.png' | asset_url }}" alt="Dropdown Arrow" width="100%" height="auto">
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- if show_occasion_filter -%}
+    <div class="selector box2">
+      <select id="filter-occasion">
+        <option value="" selected>Select Occasion</option>
+        {% assign occasion_tags = section.settings.occasion_tags | split: ',' %}
+        {% for tag in occasion_tags %}
+          {% assign trimmed_tag = tag | strip %}
+          {% if trimmed_tag != '' and available_tags contains trimmed_tag %}
+            <option value="{{ trimmed_tag | downcase }}">{{ trimmed_tag }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+      <div class="arrow-wrapper">
+        <img src="{{ 'Vector.png' | asset_url }}" alt="Dropdown Arrow" width="100%" height="auto">
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- if show_budget_filter -%}
+    <div class="selector box3">
+      <select id="filter-budget">
+        <option value="" selected>Select Budget</option>
+        {% assign budget_tags = section.settings.budget_tags | split: ',' %}
+        {% for tag in budget_tags %}
+          {% assign trimmed_tag = tag | strip %}
+          {% if trimmed_tag != '' and available_tags contains trimmed_tag %}
+            <option value="{{ trimmed_tag | downcase }}">{{ trimmed_tag }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+      <div class="arrow-wrapper">
+        <img src="{{ 'Vector.png' | asset_url }}" alt="Dropdown Arrow" width="100%" height="auto">
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+
+    const sectionId = '#section-{{ section.id }}'; // Unique ID for the section
+    const treatFilter = document.querySelector(`${sectionId} #filter-treat`);
+    const occasionFilter = document.querySelector(`${sectionId} #filter-occasion`);
+    const budgetFilter = document.querySelector(`${sectionId} #filter-budget`);
+    const productContainer = document.querySelector(`${sectionId} .product-container`);
+    const productCards = Array.from(document.querySelectorAll(`${sectionId} .food-product-card`));
+    const filters = [treatFilter, occasionFilter, budgetFilter];
+
+    function isAnyFilterApplied() {
+      return filters.some((filter) => filter && filter.value !== '');
+    }
+
+    function addResetToAll() {
+      filters.forEach((filter) => {
+        if (filter) {
+          let resetOption = filter.querySelector('option[value="reset"]');
+          if (!resetOption) {
+            resetOption = document.createElement('option');
+            resetOption.value = 'reset';
+            resetOption.textContent = 'Reset';
+            filter.insertBefore(resetOption, filter.firstChild);
+          }
+        }
+      });
+    }
+
+    function removeResetFromAll() {
+      filters.forEach((filter) => {
+        if (filter) {
+          const resetOption = filter.querySelector('option[value="reset"]');
+          if (resetOption) {
+            resetOption.remove();
+          }
+        }
+      });
+    }
+
+    function updateDropdowns() {
+      if (isAnyFilterApplied()) {
+        addResetToAll();
+      } else {
+        removeResetFromAll();
+      }
+    }
+
+    function filterProducts() {
+      const selectedTreat = treatFilter?.value || '';
+      const selectedOccasion = occasionFilter?.value || '';
+      const selectedBudget = budgetFilter?.value || '';
+
+      const filteredProducts = productCards.filter((card) => {
+        const tags = card.dataset.tags.toLowerCase();
+        const matchesTreat = selectedTreat && selectedTreat !== 'reset' ? tags.includes(selectedTreat) : true;
+        const matchesOccasion =
+          selectedOccasion && selectedOccasion !== 'reset' ? tags.includes(selectedOccasion) : true;
+        const matchesBudget = selectedBudget && selectedBudget !== 'reset' ? tags.includes(selectedBudget) : true;
+        return matchesTreat && matchesOccasion && matchesBudget;
+      });
+
+      updateProductDisplay(filteredProducts);
+      updateDropdowns();
+      updateProductCount(filteredProducts.length); 
+    }
+
+    function updateProductCount(count) {
+      const countElement = document.getElementById('product-count');
+      if (countElement) {
+        countElement.textContent = `${count} items`; 
+      }
+    }
+
+    function resetFilters() {
+      filters.forEach((filter) => {
+        if (filter) filter.value = '';
+      });
+
+      removeResetFromAll();
+      filterProducts();
+    }
+
+    function updateProductDisplay(filteredProducts) {
+      if ($(productContainer).hasClass('slick-initialized')) {
+        $(productContainer).slick('unslick');
+      }
+
+      $(productContainer).empty().append(filteredProducts);
+
+      let slidesToShow = Math.min(filteredProducts.length, 4);
+      slidesToShow = slidesToShow < 4 ? 4 : slidesToShow;
+
+      $(productContainer).slick({
+        slidesToShow: slidesToShow,
+        slidesToScroll: slidesToShow,
+        infinite: false,
+        arrows: true,
+        dots: filteredProducts.length >= 5,
+        {% comment %} prevArrow: $('.btn-left'),
+        nextArrow: $('.btn-right'), {% endcomment %}
+        prevArrow: $(`${sectionId} .btn-left`), // Use unique class for the left button
+        nextArrow: $(`${sectionId} .btn-right`),
+        responsive: [
+          { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 3 } },
+          { breakpoint: 769, settings: { slidesToShow: 2, slidesToScroll: 2 } },
+          { breakpoint: 523, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+        ],
+      });
+
+      {% comment %} $('.btn-left, .btn-right').css('opacity', '1').prop('disabled', false); {% endcomment %}
+      $(`${sectionId} .btn-left, ${sectionId} .btn-right`).css('opacity', '1').prop('disabled', false);
+
+      setTimeout(updateArrowState, 500);
+    }
+
+    $(`${sectionId} .btn-left`).on('click', function () {
+      $(productContainer).slick('slickPrev');
+    });
+
+    $(`${sectionId} .btn-right`).on('click', function () {
+      $(productContainer).slick('slickNext');
+    });
+
+    filters.forEach((filter) => {
+      if (filter) {
+        filter.addEventListener('change', (event) => {
+          if (event.target.value === 'reset') {
+            resetFilters();
+          } else {
+            filterProducts();
+          }
+        });
+      }
+    });
+
+    const selectors = document.querySelectorAll(`${sectionId} .selector select`);
+
+    selectors.forEach((select) => {
+      const selectorWrapper = select.parentElement; 
+
+      select.addEventListener('focus', () => {
+        selectorWrapper.classList.add('active');
+      });
+
+      select.addEventListener('change', () => {
+        selectorWrapper.classList.remove('active');
+      });
+      select.addEventListener('blur', () => {
+        selectorWrapper.classList.remove('active');
+      });
+    });
+
+    filterProducts();
+
+    function updateArrowState() {
+      const slickInstance = $(productContainer).slick('getSlick');
+
+      if (slickInstance) {
+        if (slickInstance.currentSlide === 0) {
+          $(`${sectionId} .btn-left`).css('opacity', '0.5');
+          $(`${sectionId} .btn-left`).prop('disabled', true);
+        } else {
+          $(`${sectionId} .btn-left`).css('opacity', '1'); // Normal color
+          $(`${sectionId} .btn-left`).prop('disabled', false);
+        }
+
+        if (slickInstance.currentSlide + slickInstance.options.slidesToShow >= slickInstance.slideCount) {
+          $(`${sectionId} .btn-right`).css('opacity', '0.5'); 
+          $(`${sectionId} .btn-right`).prop('disabled', true);
+        } else {
+          $(`${sectionId} .btn-right`).css('opacity', '1'); 
+          $(`${sectionId} .btn-right`).prop('disabled', false);
+        }
+      }
+    }
+
+    $(productContainer).on('init reInit afterChange', function () {
+      updateArrowState();
+    });
+
+    {% comment %} $('.btn-left').on('click', function () {
+      $(productContainer).slick('slickPrev');
+      updateArrowState();
+    });
+
+    $('.btn-right').on('click', function () {
+      $(productContainer).slick('slickNext');
+      updateArrowState();
+    }); {% endcomment %}
+    $(`${sectionId} .btn-left`).on('click', function () {
+      $(productContainer).slick('slickPrev');
+      updateArrowState();
+    });
+
+    $(`${sectionId} .btn-right`).on('click', function () {
+      $(productContainer).slick('slickNext');
+      updateArrowState();
+    });
+
+    $(document).ready(function () {
+      setTimeout(updateArrowState, 500); // Delay ensures Slick is fully initialized
+    });
+  });
+</script>

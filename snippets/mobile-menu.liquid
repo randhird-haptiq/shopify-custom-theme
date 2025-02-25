@@ -1,0 +1,19 @@
+<nav>
+    <ul>
+      {% for block in section.blocks %}
+        {% if block.type == 'menu_item' %}
+          <li>
+            {% if block.settings.show_megamenu %}
+              <!-- Add a trigger for the mega menu -->
+              <a href="#" class="mobile-mega-menu-trigger" data-target="mobile-mega-menu-{{ forloop.index }}" data-title="{{ block.settings.link_name }}">
+                {{ block.settings.link_name }}
+                {% render 'icon-cheveron-right' %}
+              </a>              
+            {% else %}
+              <a href="{{ block.settings.link_url }}">{{ block.settings.link_name }}</a>
+            {% endif %}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>

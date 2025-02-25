@@ -1,0 +1,193 @@
+<style>
+    #section-{{ section.id }} .container {
+      --background-color: {{ section.settings.background_color }};
+      --text-color: {{ section.settings.text_color }};
+      --button-background-color: {{ section.settings.button_background_color }};
+      --button-text-color: {{ section.settings.button_text_color }};
+      --hover-background-color: {{ section.settings.hover_background_color }};
+      --hover-text-color: {{ section.settings.hover_text_color }};
+      --hover-button-background-color: {{ section.settings.hover_button_background_color }};
+      --hover-button-text-color: {{ section.settings.hover_button_text_color }};
+      --text-alignment: {{ section.settings.text_alignment }};
+      --text-alignment-mobile: {{ section.settings.text_alignment_mobile }}
+  
+    }
+  
+    #section-{{ section.id }} .button {
+      background-color: var(--button-background-color);
+      color: var(--button-text-color);
+    }
+  
+    #section-{{ section.id }} .button:hover {
+      background-color: var(--hover-button-background-color);
+      color: var(--hover-button-text-color);
+    }
+  </style>
+  
+  <div id="section-{{ section.id }}" class="promotional-banner section">
+    <div
+      class="container {% if section.settings.reverse %}reverse{% endif %}"
+    >
+      <div class="image-with-text-wrapper">
+        <h2 class="heading">{{ section.settings.title }}</h2>
+        <div
+          class="
+            text-body {% if section.settings.hide_description_mobile %}hide-mobile{% endif %}
+            {% if section.settings.hide_description_tablet %}hide-tablet{% endif %}
+          "
+        >
+          {{ section.settings.text }}
+        </div>
+        {% if section.settings.button_text != '' %}
+          <a
+            href="{{ section.settings.button_link }}"
+            class="button"
+          >
+            {{- section.settings.button_text -}}
+          </a>
+        {% endif %}
+      </div>
+      {% if section.settings.image %}
+        <div class="image-wrapper">
+          <img
+            src="{{ section.settings.image | img_url: 'master' }}"
+            alt="Holiday themed gift"
+            class="image"
+            width="100%"
+            height="auto"
+          >
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  
+  {% schema %}
+  {
+    "name": "Promotional banner",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Get Ready to Celebrate the Holiday Season"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Description",
+        "default": "<p>Spread joy with delightful holiday cookie gifts from Mrs. Fields. Surprise loved ones near or far with unique and beautifully curated gift sets.</p>"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#FFF3DC"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#333"
+      },
+      {
+        "type": "checkbox",
+        "id": "reverse",
+        "label": "Reverse Image Position",
+        "default":false
+      },
+      {
+        "type": "color",
+        "id": "button_background_color",
+        "label": "Button Background Color",
+        "default": "#FFF3DC"
+      },
+      {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button text Color",
+        "default": "#C4122E"
+      },
+      {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Text Alignment",
+        "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "select",
+        "id": "text_alignment_mobile",
+        "label": "Text Alignment for Mobile",
+        "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_description_tablet",
+        "label": "Hide Description on tablet",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_description_mobile",
+        "label": "Hide Description on Mobile",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Shop Now"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "color",
+        "id": "hover_background_color",
+        "label": "Hover Background Color",
+        "default": "#C4122E"
+      },
+      {
+        "type": "color",
+        "id": "hover_text_color",
+        "label": "Hover Text Color",
+        "default": "#FFF3DC"
+      },
+      {
+        "type": "color",
+        "id": "hover_button_text_color",
+        "label": "Hover Button Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "hover_button_background_color",
+        "label": "Hover Button Background Color",
+        "default": "#FFF3DC"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Promotional Banner"
+      }
+    ]
+  }
+  {% endschema %}
+  

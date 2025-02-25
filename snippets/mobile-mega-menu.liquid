@@ -1,0 +1,69 @@
+{% for block in section.blocks %}
+  {% if block.type == 'menu_item' and block.settings.show_megamenu %}
+    <div id="mobile-mega-menu-{{ forloop.index }}" class="mobile-mega-menu">
+      <div class="mobile-mega-menu-header">
+        <button class="mobile-mega-menu-back">
+          {% render 'icon-cheveron-left' %}
+          Back to Main Menu
+        </button>
+        <div class="mega-menu-title"></div>
+      </div>
+      <div class="mobile-mega-menu-content">
+        <div class="mobile-mega-menu-row">
+          {% for i in (1..3) %}
+            {% assign mega_menu_setting = 'mega_menu_' | append: i %}
+            {% assign menu = block.settings[mega_menu_setting] %}
+
+            {% if menu and menu.links.size > 0 %}
+              <div class="mobile-mega-menu-column">
+                <ul>
+                  <li>
+                    <a href="#" class="mobile-mega-menu-title">
+                      {{ menu.title }}
+                      <span class="mega-menu-icon">{% render 'icon-plus' %}</span>
+                    </a>
+                  </li>
+                  <ul class="mobile-mega-menu-list hidden">
+                    {% for item in menu.links %}
+                      <li>
+                        <a href="{{ item.url }}">{{ item.title }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </ul>
+              </div>
+            {% endif %}
+          {% endfor %}
+
+          {% if block.settings.suggestion1 and block.settings.image1 %}
+            <div class="suggest-img1 mobile-mega-menu-column">
+              <a href="{{ block.settings.sugest_url1 }}">
+                <img
+                  src="{{ block.settings.image1 | img_url: 'medium' }}"
+                  alt="Suggested Image 1"
+                  height=""
+                  width="90%"
+                >
+                <p>{{ block.settings.suggestion1 }}</p>
+              </a>
+            </div>
+          {% endif %}
+
+          {% if block.settings.suggestion2 and block.settings.image2 %}
+            <div class="suggest-img2 mobile-mega-menu-column">
+              <a href="{{ block.settings.sugest_url2 }}">
+                <img
+                  src="{{ block.settings.image2 | img_url: 'medium' }}"
+                  alt="Suggested Image 2"
+                  height=""
+                  width="90%"
+                >
+                <p>{{ block.settings.suggestion2 }}</p>
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}

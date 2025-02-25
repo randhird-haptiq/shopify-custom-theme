@@ -1,0 +1,175 @@
+{% comment %} <form id="add-to-cart-form">
+  <template v-for="(option, i) in form.options">
+    <div>
+      {% render 'products-option-row' %}
+    </div>
+  </template>
+  <button @click="addToCart" type="submit" name="add" class="add-to-cart-button">Add to cart</button>
+</form>
+<script>
+  if (document.querySelector('#add-to-cart-form')) {
+    const productForm = Vue.createApp({
+      delimiters: ['${', '}'],
+      data() {
+        return {
+          open: false,
+          variants: '',
+          selected: [],
+          form: {
+            selections: [],
+            options: [],
+          },
+        };
+      },
+      created() {
+        axios
+          .get('/products/{{ product.handle }}.js')
+          .then((results) => {
+            console.log(results);
+            this.form.options = results.data.options.map((item) => ({ ...item, visible: false }));
+            this.variants = results.data.variants;
+            console.log(variants)
+
+            results.data.options.forEach((item, index) => {
+                console.log(item)
+              this.selected.push(item.values[0]);
+            });
+
+            this.form.selections = [
+              this.selected[0] ? this.selected[0] : null,
+              this.selected[1] ? this.selected[1] : null,
+              this.selected[2] ? this.selected[2] : null,
+            ];
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+      methods: {
+        addToCart(event) {
+          event.preventDefault();
+
+         let selectedVariant
+
+         this.variants.forEach((variant, i)=>{
+            if (variant.option1===this.form.selections[0] && variant.option2===this.form.selections[1]){
+                selectedVariant=variant
+            }
+        })
+
+          let data = {
+            id: selectedVariant.id,
+            quantity: 1,
+          };
+
+          axios
+            .post('/cart/add.js', data)
+            .then((response) => {
+              store.getCart();
+            })
+            .catch((error) => {
+              console.error('Error adding to cart:', error);
+            });
+        },
+      },
+    }).mount('#add-to-cart-form');
+  }
+</script> {% endcomment %}
+<form id="add-to-cart-form">
+  <template v-for="(option, i) in form.options">
+    <div>
+      {% render 'products-option-row' %}
+    </div>
+  </template>
+  <button @click="addToCart" type="submit" name="add" class="add-to-cart-button">Add to cart</button>
+</form>
+
+<script>
+  if (document.querySelector('#add-to-cart-form')) {
+    const productForm = Vue.createApp({
+      delimiters: ['${', '}'],
+      data() {
+        return {
+          open: false,
+          variants: [],
+          selected: [],
+          form: {
+            selections: [],
+            options: [],
+          },
+        };
+      },
+      created() {
+        axios
+          .get('/products/{{ product.handle }}.js')
+          .then((results) => {
+            console.log('Product data:', results.data); // Debug product data
+            this.form.options = results.data.options.map((item) => ({ ...item, visible: false }));
+            this.variants = results.data.variants;
+
+            console.log('Variants:', this.variants); // Debug variants
+
+            results.data.options.forEach((item, index) => {
+              console.log('Option:', item); // Debug options
+              this.selected.push(item.values[0]);
+            });
+
+            this.form.selections = [
+              this.selected[0] ? this.selected[0] : null,
+              this.selected[1] ? this.selected[1] : null,
+              this.selected[2] ? this.selected[2] : null,
+            ];
+
+            console.log('Initial selections:', this.form.selections); // Debug initial selections
+          })
+          .catch((error) => {
+            console.error('Error fetching product data:', error); // Debug error
+          });
+      },
+      methods: {
+        addToCart(event) {
+          event.preventDefault();
+
+          console.log('Selected options:', this.form.selections); // Debug selected options
+          console.log('Variants:', this.variants); // Debug available variants
+
+          let selectedVariant;
+
+          this.variants.forEach((variant, i) => {
+            if (
+              variant.option1 === this.form.selections[0] &&
+              variant.option2 === this.form.selections[1] &&
+              (!variant.option3 || variant.option3 === this.form.selections[2])
+            ) {
+              selectedVariant = variant;
+            }
+          });
+
+          console.log('Selected Variant:', selectedVariant); // Debug selected variant
+
+          if (!selectedVariant) {
+            console.error('No matching variant found.');
+            return;
+          }
+
+          let data = {
+            id: selectedVariant.id,
+            quantity: 1,
+          };
+
+          console.log('Data being sent to cart:', data); // Debug data being sent
+
+          axios
+            .post('/cart/add.js', data)
+            .then((response) => {
+              console.log('Added to cart:', response.data); // Debug successful response
+              window.location.href = '/cart'; // Redirect to cart page
+            })
+            .catch((error) => {
+              console.error('Error adding to cart:', error); // Debug error
+            });
+        },
+      },
+    }).mount('#add-to-cart-form');
+  }
+</script>

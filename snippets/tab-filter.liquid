@@ -1,0 +1,133 @@
+<div class="tab-filters">
+  {% assign all_tags = '' %}
+  {% for product in collections[section.settings.collection].products %}
+    {% for tag in product.tags %}
+      {% assign all_tags = all_tags | append: tag | append: ',' %}
+    {% endfor %}
+  {% endfor %}
+</div>
+
+<script>
+  document.querySelectorAll('.tab').forEach((button) => {
+    button.addEventListener('click', function () {
+      document.querySelectorAll('.tab').forEach((tab) => tab.classList.remove('active'));
+
+      button.classList.add('active');
+
+      document.querySelectorAll(`${sectionId} .product-container`).forEach((container) => {
+        container.style.display = 'none'; // Hide all containers
+        if ($(container).hasClass('slick-initialized')) {
+          $(container).slick('unslick'); // Destroy Slick if initialized
+        }
+      });
+
+      const targetProducts = document.querySelector(button.getAttribute('data-target'));
+      targetProducts.style.display = 'block';
+
+      updateProductDisplay(targetProducts);
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const sectionId = '#section-{{ section.id }}';
+    const productContainers = document.querySelectorAll(`${sectionId} .product-container`);
+    const tabs = document.querySelectorAll(`${sectionId} .tab`);
+
+    productContainers.forEach((container, index) => {
+      if (index !== 0) {
+        container.style.display = 'none';
+        if ($(container).hasClass('slick-initialized')) {
+          $(container).slick('unslick');
+        }
+      }
+    });
+
+    tabs[0].classList.add('active');
+
+    updateProductDisplay(productContainers[0]);
+
+    tabs.forEach((button) => {
+      button.addEventListener('click', function () {
+        const targetProducts = document.querySelector(button.getAttribute('data-target'));
+
+        productContainers.forEach((container) => {
+          container.style.display = 'none';
+          if ($(container).hasClass('slick-initialized')) {
+            $(container).slick('unslick');
+          }
+        });
+
+        targetProducts.style.display = 'block';
+
+        updateProductDisplay(targetProducts);
+      });
+    });
+
+    function updateProductDisplay(productContainer) {
+      const productCards = Array.from(productContainer.querySelectorAll('.food-product-card'));
+
+      if ($(productContainer).hasClass('slick-initialized')) {
+        $(productContainer).slick('unslick');
+      }
+
+      $(productContainer).empty().append(productCards);
+
+      let slidesToShow = Math.min(productCards.length, 4);
+      slidesToShow = slidesToShow < 4 ? 4 : slidesToShow;
+
+      $(productContainer).slick({
+        slidesToShow: slidesToShow,
+        slidesToScroll: slidesToShow,
+        infinite: false,
+        arrows: true,
+        dots: productCards.length >= 5,
+        prevArrow: $(`${sectionId} .left-btn`),
+        nextArrow: $(`${sectionId} .right-btn`),
+        responsive: [
+          { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 3 } },
+          { breakpoint: 769, settings: { slidesToShow: 2, slidesToScroll: 2 } },
+          { breakpoint: 523, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+        ],
+        onInit: function () {
+          updateArrowState(productContainer);
+        },
+        onAfterChange: function (slick, currentSlide) {
+          updateArrowState(productContainer);
+        },
+      });
+
+      $(`${sectionId} .left-btn, ${sectionId} .right-btn`).css('opacity', '1').prop('disabled', false);
+
+      setTimeout(() => updateArrowState(productContainer), 500); // Delay ensures Slick is fully initialized
+    }
+
+    function updateArrowState(productContainer) {
+      const slickInstance = $(productContainer).slick('getSlick');
+      if (!slickInstance) return;
+
+      const leftButton = $(`${sectionId} .left-btn`);
+      const rightButton = $(`${sectionId} .right-btn`);
+
+      // Correcting arrow visibility conditions
+      if (slickInstance.currentSlide === 0) {
+        leftButton.css('opacity', '0.5').prop('disabled', true);
+      } else {
+        leftButton.css('opacity', '1').prop('disabled', false);
+      }
+
+      if (slickInstance.currentSlide + slickInstance.options.slidesToShow >= slickInstance.slideCount) {
+        rightButton.css('opacity', '0.5').prop('disabled', true);
+      } else {
+        rightButton.css('opacity', '1').prop('disabled', false);
+      }
+    }
+
+    // Ensure updateArrowState runs correctly after each slide change
+    $(document).on('afterChange', `${sectionId} .product-container`, function (event, slick, currentSlide) {
+      updateArrowState(slick.$slider);
+    });
+
+    // Ensure arrows update after tab switch
+    setTimeout(() => updateArrowState(productContainers[0]), 500);
+  });
+</script>

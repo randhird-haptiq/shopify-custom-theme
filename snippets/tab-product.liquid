@@ -1,0 +1,39 @@
+<div class="food-product-card"
+  data-collection="{{ collection.handle }}" 
+  data-tags="{{ product.tags | join: ',' | downcase }}"
+  data-budget="{{ product.tags | join: ',' | downcase }}"
+  data-treat="{{ product.tags | join: ',' | downcase }}"
+  data-occasion="{{ product.tags | join: ',' | downcase }}"
+  data-price="{{ product.price | money_without_currency }}">
+
+  <!-- Anchor Tag wrapping product card -->
+  <a href="{{ product.url }}" class="product-link">
+
+    <div class="product-image">
+      <img src="{{ product.featured_image | img_url: '500x' }}" alt="{{ product.title }}" loading="lazy" width="" height="">
+    </div>
+
+    <div class="product-details">
+      {% if product.compare_at_price > product.price %}
+        {% assign discount_percentage = product.compare_at_price
+          | minus: product.price
+          | times: 100
+          | divided_by: product.compare_at_price
+          | round
+        %}
+        <div class="sale-badge">{{ discount_percentage }}% Off</div>
+      {% endif %}
+      <img src="{{ 'Stars.png' | asset_url }}" alt="Stars Image" width="100%" height="auto">
+      <h3>{{ product.title }}</h3>
+      <div class="product-price-wrapper">
+        {% if product.compare_at_price %}
+          <p class="compare-at-price">
+            <s>{{ product.compare_at_price | money }}</s>
+          </p>
+        {% endif %}
+        <p class="price">{{ product.price | money }}</p>
+      </div>
+    </div>
+
+  </a>
+</div>

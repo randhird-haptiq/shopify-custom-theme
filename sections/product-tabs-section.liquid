@@ -1,0 +1,233 @@
+<style>
+    #section-{{ section.id }} {
+      --backgrounda-color: {{ section.settings.background_color }};
+      --text-color: {{ section.settings.text_color }};
+      --card-background-color: {{ section.settings.card_background_color }};
+      --card-text-color: {{ section.settings.card_text_color }};
+      --sale-badge-background-color: {{ section.settings.sale_badge_background_color }};
+      --sale-badge-text-color: {{ section.settings.sale_badge_text_color }};
+      --slider-button-background-color: {{ section.settings.slider_button_background_color }};
+      --selector-background-color: {{ section.settings.selector_background_color }};
+      --selector-text-color: {{ section.settings.selector_text_color }};
+      --on-select-background-color:{{ section.settings.on_select_background_color }};
+      --on-select-text-color:{{ section.settings.on_select_text_color }};
+      --tab-alignment:{{ section.settings.tabs_alignment }}
+    }
+  #section-{{ section.id }} .slick-dots {
+     position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+  }
+
+  #section-{{ section.id }} .slick-dots li {
+    display: inline-block;
+    margin: 0 5px;
+  }
+
+  #section-{{ section.id }} .slick-dots li button {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border:1px solid black;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: white;
+    transition: background-color 0.3s ease;
+  }
+  #section-{{ section.id }} .slick-dots li button:before{
+    color: transparent;
+  }
+  #section-{{ section.id }} .slick-dots li.slick-active button {
+    background: #DDB468;
+  }
+
+  #section-{{ section.id }} .slick-dots li button:hover {
+    background: #DDB468;
+  }
+</style>
+
+<section id="section-{{ section.id }}" class="featured-products-slider">
+  <div class="container">
+    <h2 class="section-title">{{ section.settings.heading }}</h2>
+    <div class="tab-container">
+
+      <div class="tabs-contain">
+        <button class="tab active" data-target="#tab1-products">Trending</button>
+        <button class="tab" data-target="#tab2-products">Bestsellers</button>
+        <button class="tab" data-target="#tab3-products">New Items</button>
+      </div>
+    </div>
+
+    {% render 'tab-filter',
+      collection_1: collections[section.settings.collection_1],
+      collection_2: collections[section.settings.collection_2],
+      collection_3: collections[section.settings.collection_3]
+    %}
+
+    <div class="products">
+      <div class="product-container" id="tab1-products">
+        <div class="product-list">
+          <div class="item-wrapper">
+            {% if collections[section.settings.collection_1].products.size > 0 %}
+              {% for product in collections[section.settings.collection_1].products %}
+                <div class="product-item">
+                  {% render 'tab-product', product: product %}
+                </div>
+              {% endfor %}
+            {% else %}
+              <p>No products available in the Trending collection.</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="product-container" id="tab2-products" style="display: none">
+        <div class="product-list">
+          <div class="item-wrapper">
+            {% for product in collections[section.settings.collection_2].products %}
+              <div class="product-item">
+                {% render 'tab-product', product: product %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="product-container" id="tab3-products" style="display: none">
+        <div class="product-list">
+          <div class="item-wrapper">
+            {% for product in collections[section.settings.collection_3].products %}
+              <div class="product-item">
+                {% render 'tab-product', product: product %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-wrapper">
+      <button class="left-btn">
+        <img src="{{ 'LeftBtn.png' | asset_url }}" alt="Left Arrow Image" width="100%" height="auto">
+      </button>
+      <button class="right-btn">
+        <img src="{{ 'RightBtn.png' | asset_url }}" alt="Right Arrow Image" width="100%" height="auto">
+      </button>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Tabs Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "See our selections"
+    },
+    {
+      "type": "collection",
+      "id": "collection_1",
+      "label": "Select Collection For Trending",
+      "info": "Choose the collection to display products from."
+    },
+    {
+      "type": "collection",
+      "id": "collection_2",
+      "label": "Select Collection For BestSellers",
+      "info": "Choose the collection to display products from."
+    },
+    {
+      "type": "collection",
+      "id": "collection_3",
+      "label": "Select Collection For New Items",
+      "info": "Choose the collection to display products from."
+    },
+    {
+      "type": "select",
+      "id": "tabs_alignment",
+      "label": "Tabs's Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFF3DC"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "sale_badge_background_color",
+      "label": "Sale Badge Background Color",
+      "default": "#F44336"
+    },
+    {
+      "type": "color",
+      "id": "sale_badge_text_color",
+      "label": "Sale Badge Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "slider_button_background_color",
+      "label": "Slider Button Background Color",
+      "default": "#DDB468"
+    },
+    {
+      "type": "color",
+      "id": "selector_background_color",
+      "label": "Selector Background Color",
+      "default": "#D3D3D3"
+    },
+    {
+      "type": "color",
+      "id": "selector_text_color",
+      "label": "Selector Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "on_select_background_color",
+      "label": "On Select Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "on_select_text_color",
+      "label": "On Select Text Color",
+      "default": "#DDB468"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default"
+    }
+  ]
+}
+{% endschema %}

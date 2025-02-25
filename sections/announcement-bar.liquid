@@ -1,0 +1,103 @@
+<style>
+  #section-{{ section.id }} {
+    --background-color:{{ section.settings.background_color }};
+    --text-color:{{ section.settings.text_color }};
+    --btn-bg-color:{{ section.settings.button_background_color }};
+    --btn-text-color:{{ section.settings.button_text_color }}
+  }
+</style>
+<section id="section-{{ section.id }}" class="announcement-bar">
+  <div class="header-content-wrapper">
+    {% if section.settings.header_text != blank %}
+      <p>
+        {{ section.settings.header_text }}
+        {% if section.settings.span_text %}
+          *<span>{{ section.settings.span_text }}</span>
+        {% endif %}
+      </p>
+    {% endif %}
+    {% if section.settings.button_text != '' %}
+      <a
+        href="{{ section.settings.button_link }}"
+        class="button"
+      >
+        {{ section.settings.button_text }}
+      </a>
+    {% endif %}
+    <div class="image-wrapper">
+      <img id="cancel-icon" src="{{ 'cancel.png' | asset_url }}" alt="Pause" height="11px" width="11px">
+    </div>
+  </div>
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const announcementBar = document.getElementById('section-{{ section.id }}');
+    const cancelButton = document.getElementById('cancel-icon');
+
+    cancelButton.addEventListener('click', function () {
+      announcementBar.style.display = 'none';
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "header_text",
+      "label": "Text for Announcement",
+      "info": "Add text for announcement here"
+    },
+    {
+      "type": "text",
+      "id": "span_text",
+      "label": "Span Text",
+      "info": "Add Tip or extra info about announcement here",
+      "default": "no code needed"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Sale"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#C4122E"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Button Background Color",
+      "default": "#fff9eb"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#fff9eb"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Bar"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,176 @@
+<section id="section-{{ section.id }}" class="video-section">
+  <div class="video-wrapper desktop-only">
+    {% if section.settings.video != blank %}
+      <video
+        id="custom-video"
+        {% if section.settings.autoplay %}
+          autoplay
+        {% endif %}
+        {% if section.settings.loop %}
+          loop
+        {% endif %}
+        {% if section.settings.muted %}
+          muted
+        {% endif %}
+      >
+        <source src="{{ section.settings.video | video_tag }}">
+      </video>
+      <button id="play-pause-button" class="hidden">
+        <img id="play-pause-icon" src="{{ 'pause_circle.png' | asset_url }}" alt="Pause" height="" width="">
+      </button>
+      <div class="volume-control">
+        <button id="volume-button">
+          <img id="volume-icon" src="{{ 'volume_off.png' | asset_url }}" alt="Volume" height="" width="">
+        </button>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0" class="hidden">
+      </div>
+    {% elsif section.settings.image != blank %}
+      <img
+        src="{{ section.settings.image | img_url: 'master' }}"
+        alt="Video Placeholder"
+        height=""
+        width=""
+      >
+    {% endif %}
+  </div>
+  <div class="video-wrapper mobile-only">
+    {% if section.settings.video_mobile != blank %}
+      <video id="custom-video" autoplay loop muted>
+        <source src="{{ section.settings.video_mobile | video_tag }}">
+      </video>
+      <button id="play-pause-button" class="hidden">
+        <img id="play-pause-icon" src="{{ 'pause_circle.png' | asset_url }}" alt="Pause" height="" width="">
+      </button>
+      <div class="volume-control">
+        <button id="volume-button">
+          <img id="volume-icon" src="{{ 'volume_off.png' | asset_url }}" alt="Volume" height="" width="">
+        </button>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0" class="hidden">
+      </div>
+    {% elsif section.settings.image_mobile != blank %}
+      <img
+        src="{{ section.settings.image_mobile | img_url: 'master' }}"
+        alt="Video Placeholder"
+        height=""
+        width=""
+      >
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const videos = document.querySelectorAll('video');
+    const playPauseButtons = document.querySelectorAll('#play-pause-button');
+    const playPauseIcons = document.querySelectorAll('#play-pause-icon');
+    const volumeButtons = document.querySelectorAll('#volume-button');
+    const volumeIcons = document.querySelectorAll('#volume-icon');
+    const volumeSliders = document.querySelectorAll('#volume-slider');
+
+    videos.forEach((video, index) => {
+      let lastVolume = 0.5;
+      video.muted = true;
+      video.volume = 0;
+      volumeSliders[index].value = 0;
+      volumeIcons[index].src = "{{ 'volume_off.png' | asset_url }}";
+
+      playPauseButtons[index].addEventListener('click', function () {
+        if (video.paused) {
+          video.play();
+          playPauseIcons[index].src = "{{ 'pause_circle.png' | asset_url }}";
+        } else {
+          video.pause();
+          playPauseIcons[index].src = "{{ 'play_circle.png' | asset_url }}";
+        }
+      });
+
+      volumeButtons[index].addEventListener('click', function (event) {
+        event.stopPropagation();
+
+        if (video.muted) {
+          video.muted = false;
+          video.volume = lastVolume;
+          volumeSliders[index].value = lastVolume;
+          volumeIcons[index].src = "{{ 'volume_up.png' | asset_url }}";
+          volumeSliders[index].classList.remove('hidden');
+        } else {
+          lastVolume = video.volume || 0.5;
+          video.muted = true;
+          video.volume = 0;
+          volumeSliders[index].value = 0;
+          volumeIcons[index].src = "{{ 'volume_off.png' | asset_url }}";
+          volumeSliders[index].classList.add('hidden');
+        }
+      });
+
+      volumeSliders[index].addEventListener('input', function () {
+        video.volume = this.value;
+        video.muted = this.value === '0';
+        volumeIcons[index].src = video.muted
+          ? "{{ 'volume_off.png' | asset_url }}"
+          : "{{ 'volume_up.png' | asset_url }}";
+      });
+
+      document.addEventListener('click', function (event) {
+        if (!volumeButtons[index].contains(event.target) && !volumeSliders[index].contains(event.target)) {
+          volumeSliders[index].classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Home Video Section",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Upload Video",
+      "info": "Upload an MP4 video."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Upload Image",
+      "info": "Upload an Image here."
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
+      "label": "Upload Video for Mobile",
+      "info": "Upload an MP4 video."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Upload Image for Mobile",
+      "info": "Upload an Image here."
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "muted",
+      "label": "Muted",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Video Section"
+    }
+  ]
+}
+{% endschema %}

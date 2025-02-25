@@ -1,0 +1,65 @@
+<div class="search-bar">
+  <button type="submit">
+    <svg width="13" height="13" viewBox="0 0 20 20">
+      <circle cx="9" cy="9" r="8" stroke="black" stroke-width="2" fill="none"/>
+      <line x1="15" y1="15" x2="19" y2="19" stroke="black" stroke-width="2"/>
+    </svg>
+  </button>
+  <predictive-search class="predictive-search">
+    <form action="{{ routes.search_url }}" method="get" role="search">
+      <input
+        id="Search"
+        type="search"
+        name="q"
+        value="{{ search.terms | escape }}"
+        role="combobox"
+        aria-expanded="false"
+        aria-owns="predictive-search-results"
+        aria-controls="predictive-search-results"
+        aria-haspopup="listbox"
+        aria-autocomplete="list"
+      >
+      <input name="options[prefix]" type="hidden" value="last">
+
+      <div id="predictive-search" tabindex="-1"></div>
+    </form>
+  </predictive-search>
+</div>
+
+{%- if predictive_search.performed -%}
+  <div id="predictive-search-results">
+    {%- if predictive_search.resources.products.size > 0 -%}
+      <h3 id="predictive-search-products">Products</h3>
+      <ul role="listbox" aria-labelledby="predictive-search-products">
+        {%- for product in predictive_search.resources.products -%}
+          <li role="option">
+            <a href="{{ product.url }}">
+              {{ product | image_url: width: 50 | image_tag }}
+              <span>{{ product.title }}</span>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+    <button>Search for “{{ predictive_search.terms }}”</button>
+  </div>
+{%- endif -%}
+
+<script>
+  if (!window.searchToggleInitialized) {
+    window.searchToggleInitialized = true;
+    document.addEventListener('click', function (event) {
+      const searchBar = document.getElementById('mobile-search-bar');
+      if (!searchBar) return;
+      const searchIcon = event.target.closest('#search-icon');
+      const closeSearch = event.target.closest('#close-search');
+      if (searchIcon) {
+        searchBar.classList.toggle('active');
+      }
+      if (closeSearch) {
+        searchBar.classList.remove('active');
+      }
+    });
+    document.addEventListener('shopify:section:load', function () {});
+  }
+</script>

@@ -1,0 +1,33 @@
+<div class="rich-text section">
+    <h2 class="heading">
+        {{ section.settings.title }}
+    </h2>
+    <div class="center padding-top">
+        {{ section.settings.text }}
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Rich Text",
+        "settings": [
+            {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default":"Section Heading"
+            },
+            {
+                "type": "richtext",
+                "id": "title",
+                "label": "Description",
+                "default":"<p>Write your Description here</p>"
+                }
+        ],
+        "presets": [
+            {
+            "name": "Rich Text",
+            }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,197 @@
+{% if section.settings.image %}
+  <style>
+    #section-{{ section.id }} {
+      --bg-image: url('{{ section.settings.image | image_url }}');
+      {% if section.settings.mbl_image %}
+        --bg-mobile-image: url('{{ section.settings.mbl_image | image_url }}');
+      {% else %}
+        --bg-mobile-image: var(--bg-image);
+      {% endif %}
+      --text-alignment:{{section.settings.text_alignment }};
+      --btn-bg-color: {{ section.settings.btn_background_color }};
+      --btn-text-color: {{ section.settings.btn_text_color }};
+      --text-color:{{section.settings.text_color }};
+      --mobile-text-alignment:{{section.settings.mobile_text_alignment }};
+      --tablet-text-alignment:{{ section.settings.tablet_text_alignment }};
+      --background-color:{{ section.settings.background_color }}
+    }
+  </style>
+{% endif %}
+
+<section
+  id="section-{{ section.id }}"
+  class="pickup-banner"
+>
+  <div class="container">
+    <div class="banner-wrapper">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'pickup_heading' %}
+            <h3 class="pickup-heading {% if section.settings.hide_heading_tablet %}hide-tablet{% endif %} {% if section.settings.hide_heading_mobile %}hide-mobile{% endif %}">
+              {{ block.settings.heading_text }}
+            </h3>
+          {% when 'pickup_subheading' %}
+            <h2 class="pickup-subheading {% if section.settings.hide_subheading_tablet %}hide-tablet{% endif %} {% if section.settings.hide_subheading_mobile %}hide-mobile{% endif %}">
+              {{ block.settings.subheading_text }}
+            </h2>
+          {% when 'pickup_button' %}
+            <a
+              href="{{ block.settings.button_link }}"
+              class="pickup-button"
+              style="background-color: var(--btn-bg-color); color: var(--btn-text-color);"
+            >
+              {{ block.settings.button_text }}
+            </a>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pickup Banner Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Select Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mbl_image",
+      "label": "Select Background Image for Mobile (Optional)"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "tablet_text_alignment",
+      "label": "Text Alignment For Tablet",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_alignment",
+      "label": "Text Alignment for Mobile ",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_heading_tablet",
+      "label": "Hide Heading on tablet",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_subheading_tablet",
+      "label": "Hide Sub-Heading on tablet",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_heading_mobile",
+      "label": "Hide heading on mobile",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_subheading_mobile",
+      "label": "Hide subheading on mobile",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#fff9eb"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#232323"
+    },
+    {
+      "type": "color",
+      "id": "btn_background_color",
+      "label": "Button Background Color",
+      "default": "#c4122e"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text Color",
+      "default": "#FFF3DC"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pickup_heading",
+      "name": "pickup Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading_text",
+          "label": "Heading Text",
+          "default": "Buy Online. Pick Up In Store"
+        }
+      ]
+    },
+    {
+      "type": "pickup_subheading",
+      "name": "pickup Subheading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "subheading_text",
+          "label": "Subheading Text",
+          "default": "Mrs. Fields cookies can also be purchased online and picked up in a store near you."
+        }
+      ]
+    },
+    {
+      "type": "pickup_button",
+      "name": "pickup Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Find A Store"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "pickup Image",
+      "blocks": [{ "type": "pickup_heading" }, { "type": "pickup_subheading" }, { "type": "pickup_button" }]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,183 @@
+<style>
+  #section-{{ section.id }} {
+    --background-color: {{ section.settings.background_color }};
+    --text-color: {{ section.settings.text_color }};
+  }
+</style>
+
+<section id="section-{{ section.id }}" class="footer">
+  <div class="footer-wrapper">
+    <div class="logo-content-wrapper">
+      <div class="logo-wrapper">
+        {% render 'logo' %}
+      </div>
+      <div class="social-media-wrapper">
+        <p>Follow Us</p>
+        <div class="media-icon-wrapper">
+          {% for block in section.blocks %}
+            {% if block.type == 'media_icon' %}
+              <div class="media-icon">
+                <a href="{{ block.settings.media_icon_url }}">
+                  <img
+                    src="{{ block.settings.media_icon_image | img_url: '24x24'  }}"
+                    alt="media-icon"
+                    height="24px"
+                    width="24px"
+                  >
+                </a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {% for block in section.blocks %}
+      {% assign menu = block.settings.mega_menu %}
+      {% if menu != blank and menu.links.size > 0 %}
+        <div class="footer-mega-menu" style="background-color: {{ block.settings.block_background_color }};">
+          <div class="footer-mega-menu-column">
+            <ul>
+              <li class="footer-menu-title">
+                <a href="#" class="footer-mega-menu-title" style="color: {{ block.settings.block_text_color }};">
+                  {{- menu.title -}}
+                </a>
+              </li>
+              {% for item in menu.links %}
+                <li class="footer-menu-links">
+                  <a
+                    href="{{ item.url }}"
+                    class="footer-mega-menu-list"
+                    style="color: {{ block.settings.block_text_color }};"
+                  >
+                    {{- item.title -}}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+
+    <div class="footer-mega-menu-mobile">
+      {% for block in section.blocks %}
+        {% assign menu = block.settings.mega_menu %}
+        {% if menu != blank and menu.links.size > 0 %}
+          <div
+            class="footer-mega-menu-column-mobile"
+            style="background-color: {{ block.settings.block_background_color }};"
+          >
+            <ul>
+              <li>
+                <a class="footer-mega-menu-title-mobile" onclick="toggleMenu(this)">
+                  {{ menu.title }}
+                  <span class="icon-plus">{% render 'icon-footer-plus' %}</span>
+                </a>
+              </li>
+              {% for item in menu.links %}
+                <li class="footer-mega-menu-list-mobile">
+                  <a href="{{ item.url }}">{{ item.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<script>
+
+  function toggleMenu(element) {
+    const menuColumn = element.closest('.footer-mega-menu-column-mobile');
+    menuColumn.classList.toggle('open');
+  
+    const icon = element.querySelector('.icon-plus');
+    if (menuColumn.classList.contains('open')) {
+      icon.innerHTML = `{% render 'icon-footer-minus' %}`;
+    } else {
+      icon.innerHTML = `{% render 'icon-footer-plus' %}`;
+    }
+  }
+  
+</script>
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#7B7973"
+    }
+  ],
+  "max_blocks": 15,
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Upload Logo"
+        }
+      ]
+    },
+    {
+      "type": "menu_item",
+      "name": "Navigation Item",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "mega_menu",
+          "label": "Select Mega Menu"
+        },
+        {
+          "type": "color",
+          "id": "block_background_color",
+          "label": "Background Color for nav menu",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "block_text_color",
+          "label": "Text Color for nav menu",
+          "default": "#7B7973"
+        }
+      ]
+    },
+    {
+      "type": "media_icon",
+      "name": "Media Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "media_icon_image",
+          "label": "Upload Media Icon"
+        },
+        {
+          "type": "url",
+          "id": "media_icon_url",
+          "label": "Media Icon URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer"
+    }
+  ]
+}
+{% endschema %}

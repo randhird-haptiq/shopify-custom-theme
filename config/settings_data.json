@@ -1,0 +1,12 @@
+{
+  "current": {
+    "currency_format": "${{amount}} USD",
+    "money_format": "${{amount}}",
+    "money_with_currency_format": "${{amount}} USD",
+    "enabled_currencies": ["USD"],
+    "default_currency": "USD"
+  },
+  "presets": {
+    "Default": {}
+  }
+}
